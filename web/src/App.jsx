@@ -30,7 +30,7 @@ async function createSession(userId) {
   const res = await fetch(`${API_BASE}/session`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ user_id: userId }),
+    body: JSON.stringify({ user_id: userId, room:"dev-room" }),
   });
 
   if (!res.ok) {

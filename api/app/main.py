@@ -37,6 +37,7 @@ app.add_middleware(
 
 class CreateSessionRequest(BaseModel):
     user_id: str = Field(..., min_length=1, max_length=128)
+    room: str | None = Field(default=None, max_length=256)
     display_name: str | None = Field(default=None, max_length=128)
     room_prefix: str = Field(default="sess", max_length=32)
 
@@ -77,7 +78,7 @@ def create_session(req: CreateSessionRequest):
             status_code=500, detail="LiveKit credentials not configured"
         )
 
-    room = f"{req.room_prefix}-{uuid.uuid4().hex}"
+    room = req.room or f"{req.room_prefix}-{uuid.uuid4().hex}"
     # Identity should be stable per user within the session. For now, keep it simple:
     identity = f"user-{req.user_id}"
 
