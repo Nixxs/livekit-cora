@@ -22,7 +22,7 @@ LIVEKIT_API_SECRET = os.getenv("LIVEKIT_API_SECRET", "")
 
 # In dev, allow your local web app to call the API from the browser.
 # In prod, set this to your real web origin(s).
-WEB_ORIGIN = os.getenv("WEB_ORIGIN", "http://localhost:5173")
+WEB_ORIGIN = os.getenv("WEB_ORIGIN", "http://localhost:8080")
 
 app = FastAPI(title="LiveKit Session API", version="0.1.0")
 
