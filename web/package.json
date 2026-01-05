@@ -1,5 +1,5 @@
 {
-  "name": "web",
+  "name": "CORA",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,13 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@fontsource/roboto": "^5.2.9",
     "@livekit/components-react": "^2.9.17",
     "@livekit/components-styles": "^1.2.0",
+    "@mui/icons-material": "^7.3.6",
+    "@mui/material": "^7.3.6",
     "highlight.js": "^11.11.1",
     "livekit-client": "^2.16.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.11.0",
+    "react-syntax-highlighter": "^16.1.0",
     "rehype-highlight": "^7.0.2",
     "remark-gfm": "^4.0.1"
   },
