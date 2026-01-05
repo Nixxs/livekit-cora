@@ -2,24 +2,14 @@ import {styled} from "@mui/material/styles";
 import {Outlet} from "react-router-dom";
 
 const Root = styled("div")(() => ({
-    display: "flex",
-    flexDirection: "column",
-    minHeight: "100vh",
-    minWidth: "100vw"
-}));
-
-const Main = styled("div")(() => ({
-    flex: 1,
-    display: "flex",
-    flexDirection: "column"
+    height: "100vh",    // Add this to lock the layout to the screen height
+    width: "100vw",     // Optional: ensures no horizontal drift
 }));
 
 function Layout() {
     return (
         <Root>
-            <Main>
-                <Outlet />
-            </Main>
+          <Outlet />
         </Root>
     );
 }

@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -35,9 +35,15 @@ export default function RenderMessage({ text }) {
 
         // Normal text
         return (
-          <span key={i} style={{ whiteSpace: "pre-wrap" }}>
+          <Typography
+            component="span"
+            key={i} 
+            sx={{ 
+              whiteSpace: "pre-wrap" 
+            }}
+          >
             {part}
-          </span>
+          </Typography>
         );
       })}
     </>

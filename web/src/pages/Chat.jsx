@@ -77,26 +77,22 @@ export default function Chat(){
     }
 
     // this can be used to display the live delta of the data coming back from the ai but it shows up too early
-    // if (t === "response.audio_transcript.delta") {
-    //   const delta = evt.delta;
-    //   if (typeof delta === "string" && delta.length) {
-    //     currentAssistantTextRef.current += delta;
-    //     upsertPartial("assistant", currentAssistantTextRef.current);
-    //   }
-    //   return;
-    // }
+    if (t === "response.audio_transcript.delta") {
+      const delta = evt.delta;
+      if (typeof delta === "string" && delta.length) {
+        currentAssistantTextRef.current += delta;
+        upsertPartial("assistant", currentAssistantTextRef.current);
+      }
+      return;
+    }
 
     if (t === "response.audio_transcript.done") {
-      const finalText = evt.transcript ?? currentAssistantTextRef.current;
-      if (typeof finalText === "string" && finalText.trim()) {
-        upsertPartial("assistant", finalText.trim());
-      }
       finalizeTurn("assistant");
       return;
     }
 
     // Catch-all (useful when debugging event types)
-    // log(`event: ${t}`);
+    log(`event: ${t}`);
   };
 
   const start = async () => {
@@ -253,7 +249,11 @@ export default function Chat(){
   return (
     <Box
       sx={{
-        padding: 2
+        height: "100vh",
+        boxSizing: "border-box",
+        padding: 2,
+        display: "flex",
+        flexDirection: "column"
       }}
     >
       <audio ref={remoteAudioRef} autoPlay />
@@ -264,12 +264,15 @@ export default function Chat(){
         stop={stop}
         status={status}
       /> 
-     
 
       {/* chat block */}
       <Box
         sx={{
-          mt: 1
+          mt: 1,
+          minHeight: 0,
+          minWidth: 0,
+          display: "flex",
+          flex: 1
         }}
       >
         <ChatTranscript 
